@@ -22,8 +22,23 @@
 		<script src="assets/js/app.js" type="text/javascript" charset="utf-8"></script>
 		<script>
 			function redirect(){
-				alert('Redirecting to the Ford Social Widget');
+				alert('Redirecting to the Ford Social Widget')
 				window.location = "http://social.ford.com/wp-content/themes/insider/global_apps/photo.php?preview=true";
+			}
+			
+			function camera(){}
+				navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
+	    			destinationType: Camera.DestinationType.DATA_URL
+	 			}); 
+	 		}
+
+			function onSuccess(imageData) {
+			    var image = document.getElementById('image');
+			    image.src = "data:image/jpeg;base64," + imageData;
+			}
+			
+			function onFail(message) {
+			    alert('Failed because: ' + message);
 			}
 		
 		</script>
@@ -32,7 +47,9 @@
  		<div id="title_bar">Photo Submission Test</div>
 
 			<div id="welcome" class="view">
-			  <a href="http://social.ford.com/wp-content/themes/insider/global_apps/photo.php?preview=true">Link</a>
+			  <div class="app_button" onClick="redirect()">Go To Ford Social Widget</div>
+			  <div class="app_button" onClick="camera()">Access Camera</div>
+			  <img src="icon.png" id="image"/>
 	  	 	</div>
 
 		</div>
