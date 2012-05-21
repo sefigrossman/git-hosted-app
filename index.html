@@ -4,9 +4,7 @@
 		<meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width" />
 		<title>Training App</title>
 		<link rel="stylesheet" href="assets/css/master.css" type="text/css" media="screen" />
-		
-		<script src="phonegap.js" type="text/javascript" charset="utf-8"></script>
-		
+				
 		<script src="assets/js/xui.js" type="text/javascript" charset="utf-8"></script>
 		
 		<script src="assets/js/lawnchair/adaptors/LawnchairAdaptorHelpers.js" type="text/javascript" charset="utf-8"></script>
@@ -26,7 +24,7 @@
 				window.location = "http://social.ford.com/wp-content/themes/insider/global_apps/photo.php?preview=true";
 			}
 			
-			function camera(){}
+			function camera(){
 				navigator.camera.getPicture(onSuccess, onFail, { quality: 50, allowEdit: true,
 	    			destinationType: Camera.DestinationType.DATA_URL
 	 			}); 
@@ -40,14 +38,13 @@
 			function onFail(message) {
 			    alert('Failed because: ' + message);
 			}
-		
 		</script>
 	</head>
 	<body>
  		<div id="title_bar">Photo Submission Test</div>
 
 			<div id="welcome" class="view">
-			  <div class="app_button" onClick="redirect()">Go To Ford Social Widget</div>
+			  <div class="app_button" onClick="redirect()">Photo Submission</div>
 			  <div class="app_button" onClick="camera()">Access Camera</div>
 			  <img src="icon.png" id="image"/>
 	  	 	</div>
