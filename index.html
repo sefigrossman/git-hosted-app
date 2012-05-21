@@ -25,9 +25,8 @@
 			}
 			
 			function camera(){
-				navigator.camera.getPicture(onSuccess, onFail, { quality: 50, allowEdit: true,
-	    			destinationType: Camera.DestinationType.DATA_URL
-	 			}); 
+				alert('Accessing camera')
+				navigator.camera.getPicture(onSuccess, onFail, {quality: 50, destinationType: Camera.DestinationType.DATA_URL}); 
 	 		}
 
 			function onSuccess(imageData) {
@@ -46,7 +45,7 @@
 			<div id="welcome" class="view">
 			  <div class="app_button" onClick="redirect()">Photo Submission</div>
 			  <div class="app_button" onClick="camera()">Access Camera</div>
-			  <img src="icon.png" id="image"/>
+			  <div margin="10px"><img src="icon.png" id="image"/></div>
 	  	 	</div>
 
 		</div>
