@@ -24,27 +24,34 @@
 				window.location = "http://social.ford.com/wp-content/themes/insider/global_apps/photo.php?preview=true";
 			}
 			
-			function camera(){
-				alert('Accessing camera')
-				navigator.camera.getPicture(onSuccess, onFail, {quality: 50, destinationType: Camera.DestinationType.DATA_URL}); 
-	 		}
-
-			function onSuccess(imageData) {
-			    var image = document.getElementById('image');
-			    image.src = "data:image/jpeg;base64," + imageData;
-			}
-			
-			function onFail(message) {
-			    alert('Failed because: ' + message);
+			function PictureSourceType() {};
+			PictureSourceType.PHOTO_LIBRARY = 0;
+			PictureSourceType.CAMERA = 1;
+			 
+			function getPicture(sourceType)
+			{
+				alert('getPicture');
+			     var options = { quality: 50 };
+			     if (sourceType != undefined) {
+			          options["sourceType"] = sourceType;
+			     }
+			     // if no sourceType specified, the default is CAMERA 
+			     navigator.camera.getPicture(getPicture_Success, null, options);
+			};
+			 
+			function getPicture_Success(imageData)
+			{
+			         alert("getpic success");
+			        document.getElementById("image").src = "data:image/jpeg;base64," + imageData;
 			}
 		</script>
 	</head>
 	<body>
- 		<div id="title_bar">Photo Submission Test</div>
+ 		<div id="title_bar">Photo Submission Test v2</div>
 
 			<div id="welcome" class="view">
 			  <div class="app_button" onClick="redirect()">Photo Submission</div>
-			  <div class="app_button" onClick="camera()">Access Camera</div>
+			  <div class="app_button" onClick="getPicture()">Access Camera</div>
 			  <div margin="10px"><img src="icon.png" id="image"/></div>
 	  	 	</div>
 
