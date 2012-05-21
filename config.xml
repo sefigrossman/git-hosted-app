@@ -4,21 +4,24 @@
 	id		= "com.phonegap.getting.started"
 	version 	= "1.0.0">
 
-	<name>PhoneGap: Getting Started</name>
+	<name>Ford Social Photo Submission</name>
 
 	<description>
-		A template for getting started with PhoneGap development and build.phonegap.com
+		Submit your photo to Ford Social
 	</description>
 
-	<author href="http://alunny.github.com"
-		email="andrew.lunny@nitobi.com">
-		Andrew Lunny
+	<author 
+		email="sefi.grossman@teamdetroit.com">
+		Sefi Grossman
 	</author>
 
 	<icon src="icon.png" gap:role="default" />
 
 	<feature name="http://api.phonegap.com/1.0/geolocation"/>
 	<feature name="http://api.phonegap.com/1.0/network"/>
-
+	<feature name="http://api.phonegap.com/1.0/camera"/>
+	
+	<preference name="fullscreen" value="true" />
 	<preference name="orientation" value="portrait" />
+	<preference name="stay-in-webview" value="true" />
 </widget>
