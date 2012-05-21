@@ -27,7 +27,7 @@
 			}
 			
 			function camera(){}
-				navigator.camera.getPicture(onSuccess, onFail, { quality: 50,
+				navigator.camera.getPicture(onSuccess, onFail, { quality: 50, allowEdit: true,
 	    			destinationType: Camera.DestinationType.DATA_URL
 	 			}); 
 	 		}
