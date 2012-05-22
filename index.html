@@ -4,7 +4,10 @@
 		<meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width" />
 		<title>Training App</title>
 		<link rel="stylesheet" href="assets/css/master.css" type="text/css" media="screen" />
+		
 		<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
+		<script type="text/javascript" charset="utf-8" src="assets/js/jquery.js"></script>
+
 		<script src="assets/js/xui.js" type="text/javascript" charset="utf-8"></script>
 		
 		<script src="assets/js/lawnchair/adaptors/LawnchairAdaptorHelpers.js" type="text/javascript" charset="utf-8"></script>
@@ -22,8 +25,9 @@
 
 
 
-		
-
+			function changeIframe(){
+				document.getElementById("iframe").src="http://www.sefigrossman.com/phonegap.html";
+			}
 
 			function redirect(){
 				alert('Redirecting to the Ford Social Widget')
@@ -91,6 +95,7 @@
 
 			<div id="welcome" class="view">
 			  <div class="app_button" onClick="capturePhoto()">Access Camera</div>
+			  <div class="app_button" onClick="changeIframe()">Change iFrame</div>
 			  <div margin="10px"><img src="icon.png" id="image"/ width="100%"></div>
 			  <iframe id="iframe" src="http://social.ford.com/wp-content/themes/insider/global_apps/photo.php?preview=true"></iframe>
 	  	 	</div>
