@@ -46,16 +46,53 @@
 				alert('onFail: ' + data);
 			
 			}
+			
+			
+			  document.addEventListener("deviceready",function() {
+			    var iframe = document.getElementById('iframe');
+			    var url = "http://example.com";
+			    // Announce that we have a camera.
+			    iframe.addEventListener("load", function(event) {
+			      iframe.contentWindow.postMessage({
+			        cameraEnabled: navigator.camera != null && navigator.camera.getPicture != null
+			      }, url);
+			    }, false);
+			    // Listen for requests to use it.
+			    window.addEventListener("message", function(event) {
+			      if (event.origin == url) {
+			        if (event.data == "camera") {
+			          navigator.camera.getPicture(function(imageData) {
+			            iframe.contentWindow.postMessage({
+			              image: imageData
+			            }, url);
+			          }, function(message) {
+			            iframe.contentWindow.postMessage({
+			              error: message
+			            }, url);
+			          }, {
+			            quality: 50,
+			            sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY,
+			            destinationType: navigator.camera.DestinationType.DATA_URL,
+			            targetWidth: 640,
+			            targetHeight: 640
+			          });
+			        }
+			      }
+			    }, false);
+			    iframe.src= url;
+			  }, false);
+
+			
 		</script>
+		
 	</head>
 	<body>
  		<div id="title_bar">Photo Submission Test v4</div>
 
 			<div id="welcome" class="view">
-			  <div class="app_button" onClick="redirect()">Photo Submission</div>
 			  <div class="app_button" onClick="capturePhoto()">Access Camera</div>
-			  <div margin="10px"><img src="icon.png" id="image"/ width="100%" height="100%"></div>
-			  <iframe src="http://social.ford.com/wp-content/themes/insider/global_apps/photo.php?preview=true"></iframe>
+			  <div margin="10px"><img src="icon.png" id="image"/ width="100%"></div>
+			  <iframe id="iframe" src="http://social.ford.com/wp-content/themes/insider/global_apps/photo.php?preview=true"></iframe>
 	  	 	</div>
 
 		</div>
