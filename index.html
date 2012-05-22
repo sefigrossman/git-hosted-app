@@ -4,7 +4,7 @@
 		<meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width" />
 		<title>Training App</title>
 		<link rel="stylesheet" href="assets/css/master.css" type="text/css" media="screen" />
-		<script type="text/javascript" charset="utf-8" src="PhoneGap.js"></script>
+		<script type="text/javascript" charset="utf-8" src="phonegap.js"></script>
 		<script src="assets/js/xui.js" type="text/javascript" charset="utf-8"></script>
 		
 		<script src="assets/js/lawnchair/adaptors/LawnchairAdaptorHelpers.js" type="text/javascript" charset="utf-8"></script>
@@ -19,17 +19,33 @@
 		
 		<script src="assets/js/app.js" type="text/javascript" charset="utf-8"></script>
 		<script>
+		console.log('here');
 			function redirect(){
 				alert('Redirecting to the Ford Social Widget')
 				window.location = "http://social.ford.com/wp-content/themes/insider/global_apps/photo.php?preview=true";
 			}
 			
 			function capturePhoto(){
-    			navigator.camera.getPicture(uploadPhoto,null,{sourceType:1,quality:60});
+				  try {
+                    navigator.camera.getPicture(uploadPhoto, onFail, { quality: 50, 
+                                                destinationType: destinationType.FILE_URI,
+                                                sourceType: 1 });
+                    }catch (err)
+                    {
+                        alert('trycatch error: ' + err);
+                    }
+			
+			
+    			//navigator.camera.getPicture(uploadPhoto,null,{sourceType:1,quality:60});
 			}
 			
 			function uploadPhoto(data){
 			    document.getElementById("image").src = "data:image/jpeg;base64," + data;
+			}
+			
+			function onFail(data){
+				alert('onFail: ' + data);
+			
 			}
 		</script>
 	</head>
