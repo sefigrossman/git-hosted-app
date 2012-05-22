@@ -31,8 +31,10 @@
 			}
 			
 			function capturePhoto(){
+			try{
 				 navigator.camera.getPicture(uploadPhoto, onFail, { quality: 50,  sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY,
                                                     destinationType: navigator.camera.DestinationType.DATA_URL });
+              }catch(err){alert('err: ' + err);}
 
 			}
 			
